@@ -1,0 +1,7 @@
+{
+  "name": "share-count",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "ionic-angular"
+}
