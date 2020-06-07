@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SplitAmountPage } from '../split-amount/split-amount';
 
 /**
  * Generated class for the NewEventPage page.
@@ -20,6 +21,20 @@ export class NewEventPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewEventPage');
+  }
+
+  onAddPaymentClick(){
+    // TODO : Gérer l'ajout d'un paiement
+    console.log('TODO : Gérer ajout paiement')
+  }
+
+  onGoToSplitClick(){
+    this.navCtrl.push(SplitAmountPage);
+  }
+
+  onSaveAndReturnClick(){
+    // TODO : Save Current Data
+    this.navCtrl.pop();
   }
 
 }

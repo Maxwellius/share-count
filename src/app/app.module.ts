@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ComponentsHeaderTileComponent } from '../components/components-header-tile/components-header-tile';
 import { ComponentsTileComponent } from '../components/components-tile/components-tile';
 import { NewEventPage } from '../pages/new-event/new-event';
+import { SplitAmountPage } from '../pages/split-amount/split-amount';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NewEventPage } from '../pages/new-event/new-event';
     TabsPage,
     NewEventPage,
     ComponentsHeaderTileComponent,
-    ComponentsTileComponent
+    ComponentsTileComponent,
+    SplitAmountPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { NewEventPage } from '../pages/new-event/new-event';
     HomePage,
     TabsPage,
     ComponentsHeaderTileComponent,
-    ComponentsTileComponent
+    ComponentsTileComponent,
+    SplitAmountPage 
   ],
   providers: [
     StatusBar,

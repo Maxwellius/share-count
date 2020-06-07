@@ -1,0 +1,32 @@
+<ion-content padding>
+  <components-header-tile
+    title="Partage"
+    subtitle=""
+    [onlyTitle]="true"
+  ></components-header-tile>
+  <components-tile>
+    <h1>Partager la dépense</h1>
+    <p><b>Montant total: 2500€</b></p>
+    
+    <div class="nbSelector">
+      <ion-button (click)="onClick()">
+        +
+      </ion-button>
+      5
+      <ion-button (click)="onClick()">
+        -
+      </ion-button>
+    </div>
+
+    <div class="centeredButtonContainer">
+      <ion-button (click)="onClick()">
+        Ajouter un membre
+      </ion-button>
+    </div>
+    <div class="centeredButtonContainer">
+      <ion-button (click)="onClick()" class="secondary">
+        Enregistrer le partage
+      </ion-button>
+    </div>
+  </components-tile>
+</ion-content>
