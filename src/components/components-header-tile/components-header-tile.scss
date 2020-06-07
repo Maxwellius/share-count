@@ -1,0 +1,17 @@
+.headerTile--container {
+    box-shadow: -2px -6px 7px rgba(248, 252, 255, 0.5), 2px 6px 7px rgba(0, 0, 0, 0.09);
+    background: linear-gradient(90deg, #F9C58D 0%, #F492F0 100%);
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+    padding-left: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+    margin-bottom: 10px;
+}
+
+.headerTile--container h1{
+    font-family: 'Overlock';
+}

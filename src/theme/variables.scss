@@ -21,6 +21,9 @@ $app-direction: ltr;
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
+:root{
+  --ion-padding: 10px;
+}
 
 
 
@@ -86,3 +89,69 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+@font-face {
+  font-family: 'Overlock';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Overlock-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Overlock';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/Overlock-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Overlock';
+  font-style: italic;
+  font-weight: normal;
+  src: url('../assets/fonts/Overlock-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'Overlock';
+  font-style: normal;
+  font-weight: bolder;
+  src: url('../assets/fonts/Overlock-Black.ttf');
+}
+
+@font-face {
+  font-family: 'Jaldi';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/Jaldi-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Jaldi';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/Jaldi-Bold.ttf');
+}
+body{
+  background-color: #E5E5E5;
+  font-family: 'Jaldi';
+}
+
+.content-ios{
+  background-color: #F9F9F9 !important;
+}
+
+ion-button{
+  /* Default Gradient */
+  background: linear-gradient(90deg, #F9C58D 0%, #F492F0 100%);
+  /* Anti Flash White */
+
+  border: 2px solid #FDFFFC;
+  box-sizing: border-box;
+  /* Skeumorphism shadows */
+
+  box-shadow: -2px -6px 7px rgba(248, 252, 255, 0.5), 2px 6px 7px rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+
+  padding: 5px 15px;
+
+  font-family: 'Jaldi';
+}

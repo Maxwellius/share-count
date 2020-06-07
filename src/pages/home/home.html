@@ -1,17 +1,18 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <components-header-tile
+    [onlyTitle]="false"
+    title="ShareCount"
+    subtitle="Le partage des dépenses, sans la prise de tête"
+  >
+  </components-header-tile>
+  <components-tile>
+    <h2>Créer un nouvel événement</h2>
+    <p class="no-padding-margin">Choisissez les participants, indiquez le montant,</p>
+    <p><b>ShareCount se charge du reste</b></p>
+    <div class="centeredButtonContainer">
+      <ion-button (click)="onClick()">
+        Commencer
+      </ion-button>
+    </div>
+  </components-tile>
 </ion-content>
