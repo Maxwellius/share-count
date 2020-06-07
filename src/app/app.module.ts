@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ComponentsHeaderTileComponent } from '../components/components-header-tile/components-header-tile';
 import { ComponentsTileComponent } from '../components/components-tile/components-tile';
+import { NewEventPage } from '../pages/new-event/new-event';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ComponentsTileComponent } from '../components/components-tile/component
     ContactPage,
     HomePage,
     TabsPage,
+    NewEventPage,
     ComponentsHeaderTileComponent,
     ComponentsTileComponent
   ],
@@ -32,6 +34,7 @@ import { ComponentsTileComponent } from '../components/components-tile/component
     MyApp,
     AboutPage,
     ContactPage,
+    NewEventPage,
     HomePage,
     TabsPage,
     ComponentsHeaderTileComponent,

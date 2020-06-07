@@ -30,3 +30,15 @@
     padding: 0;
 }
 
+.tile ion-input, .tile ion-label{
+    font-size: 0.75em;
+    padding-left: 10px;
+}
+.tile ion-input{
+    background: #FFFFFF;
+    border: 1px solid #4F4F4F;
+    border-radius: 8px;
+}
+.tile ion-item {
+    background-color: #F9F9F9;
+}

@@ -1,0 +1,33 @@
+<ion-content padding>
+  <components-header-tile
+    [onlyTitle]="true"
+    title="Nouvel Evenement"
+    subtitle=""
+  >
+  </components-header-tile>
+  <components-tile>
+    <div class="form-group">
+      <h2>Informations</h2>
+      <ion-item no-padding no-lines>
+        <ion-label floating>Nom de l'événement</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    </div>
+  </components-tile>
+  <div class="centeredButtonContainer mBottom">
+    <ion-button (click)="onClick()" centered>
+      Ajouter un paiement
+    </ion-button>
+  </div>
+  <div class="centeredButtonContainer mBottom">
+    <ion-button (click)="onClick()" centered>
+      Passer au partage
+    </ion-button>
+  </div>
+  <div class="centeredButtonContainer mBottom">
+    <ion-button (click)="onClick()" centered class="secondary">
+      Enregistrer et continuer plus tard
+    </ion-button>
+  </div>
+
+</ion-content>

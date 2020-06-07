@@ -155,3 +155,16 @@ ion-button{
 
   font-family: 'Jaldi';
 }
+
+ion-button.secondary{
+  background: #F9F9F9;
+}
+
+.centeredButtonContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.centeredButtonContainer.mBottom{
+  margin-bottom: 10px;
+}
