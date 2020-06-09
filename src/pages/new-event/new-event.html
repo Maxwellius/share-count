@@ -1,6 +1,6 @@
 <ion-content padding>
   <components-header-tile
-    [onlyTitle]="true"
+    [justTitle]="true"
     title="Nouvel Evenement"
     subtitle=""
   >
@@ -10,7 +10,7 @@
       <h2>Informations</h2>
       <ion-item no-padding no-lines>
         <ion-label floating>Nom de l'événement</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="project.name"></ion-input>
       </ion-item>
     </div>
   </components-tile>
@@ -29,5 +29,4 @@
       Enregistrer et continuer plus tard
     </ion-button>
   </div>
-
 </ion-content>

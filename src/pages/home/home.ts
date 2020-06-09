@@ -46,20 +46,34 @@ export class HomePage implements OnInit {
         });
       }
       console.log('C est le ion view did load');
-      this.projects = await Project.find();
+      await this.refreshPage();
     });
   }
-  async ionViewDidLoad(){
+
+  trackByProjects(index: number, item: Project ){
+    return item.id;
   }
+  async refreshPage(){
+    console.log('RefreshPage called')
+    this.projects = await Project.find();
+    this.projects = [...this.projects];
+  }
+
   onStartButtonClick(){
     this.navCtrl.push(NewEventPage, {
       isNewProject: true,
       projectId: null,
-    });
+      callbackRefresh: () => this.refreshPage()
+    })
   }
-  async test(){
-    console.log("ionViewDidLoad")
-    const projectRepository = await getRepository('Projects').find();
+
+  onDetailButtonClick(projectId: number){
+    this.navCtrl.push(NewEventPage, {
+      isNewProject: false,
+      projectId: projectId,
+      callbackRefresh: () => this.refreshPage()
+    })
+
   }
 
 }

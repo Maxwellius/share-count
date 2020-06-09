@@ -1,3 +1,15 @@
 ion-content{
     --ion-background-color:#F9F9F9;
 }
+
+
+components-tile.horizontal .tile{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+components-tile.low-padding .tile{
+    padding: 15px;
+}

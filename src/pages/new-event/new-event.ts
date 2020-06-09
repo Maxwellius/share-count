@@ -18,21 +18,28 @@ import Project from '../../models/Project';
 export class NewEventPage {
 
   project: Project;
-  projectNameControlValue: string;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public toastController: ToastController
     ) {
   }
-
-  async ionViewDidLoad() {
+  async ngOnInit(){
     if(this.navParams.get('isNewProject')){
       this.project = new Project();
+      this.project.name = ''
     } else {
-      this.project = await Project.findOne({id:this.navParams.get('projectId')})
-      this.projectNameControlValue = this.project.name
+      //This Project initialized to keep async AND don't crash
+      this.project = new Project();
+      this.project.name = ''
+
+      //This Project with true values
+      console.log(this.navParams.get('projectId'));
+      this.project = await Project.findOne({id:this.navParams.get('projectId')});
     } 
+  }
+
+  async ionViewDidLoad() {
   }
 
   onAddPaymentClick(){
@@ -46,12 +53,11 @@ export class NewEventPage {
   }
 
   async onSaveAndReturnClick(){
-    if (this.projectNameControlValue != '' && this.projectNameControlValue != null){
-      this.project.name = this.projectNameControlValue; 
+    if (this.project.name != '' && this.project.name != null){
       await this.project.save();
+      this.navParams.get('callbackRefresh')();
       this.navCtrl.pop();
     } else {
-      console.log('hello');
       const toast = await this.toastController.create({message: "Le projet n'a pas de titre, il n'a pas été enregistré", duration: 2000})
       toast.present();
       this.navCtrl.pop();

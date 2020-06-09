@@ -11,7 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ComponentsHeaderTileComponent implements OnInit{
 
-  @Input() onlyTitle: boolean;
+  @Input() justTitle: boolean;
   @Input() title: string;
   @Input() subtitle?: string;
 
@@ -19,7 +19,6 @@ export class ComponentsHeaderTileComponent implements OnInit{
   }
 
   ngOnInit(){
-    console.log(this.onlyTitle);
   }
 
 }
