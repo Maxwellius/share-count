@@ -1,4 +1,5 @@
 import Payment from './Payment';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity } from 'typeorm';
 
 export interface IProject{
     id: number,
@@ -6,16 +7,19 @@ export interface IProject{
     payments: Payment[],
 }
 
-export default class Project{
+@Entity('Project')
+export default class Project extends BaseEntity{
 
+
+    @PrimaryGeneratedColumn()
     id: number;
+    @Column()
     name: string;
+    @OneToMany(type => Payment, payment => payment.project)
     payments: Payment[];
 
-    constructor(newProject: IProject){
-        this.id = newProject.id;
-        this.name = newProject.name;
-        this.payments = newProject.payments;
+    constructor(){
+        super()
     }
 
     addPayment(payment: Payment): void{

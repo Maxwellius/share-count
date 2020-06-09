@@ -1,4 +1,5 @@
-import { Table, Column, PrimaryColumn, PrimaryGeneratedColumn } from "ionic-orm";
+import { ManyToOne, Column, PrimaryGeneratedColumn, Entity, BaseEntity } from "typeorm";
+import Project from "./Project";
 
 export interface IPayment{
     id: number,
@@ -6,8 +7,8 @@ export interface IPayment{
     montant: number,
 }
 
-@Table()
-export default class Payment{
+@Entity('Payment')
+export default class Payment extends BaseEntity{
 
     @PrimaryGeneratedColumn()
     id: number;
@@ -15,11 +16,11 @@ export default class Payment{
     name: string;
     @Column("int")
     montant: number;
+    @ManyToOne(type => Project, project => project.payments)
+    project: Project;
     
-    constructor(newPayment: IPayment){
-        this.id = newPayment.id;
-        this.name = newPayment.name;
-        this.montant = newPayment.montant;
+    constructor(){
+        super();
     }
 
     montantToEuros(): string{

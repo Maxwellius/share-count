@@ -1,10 +1,10 @@
-import { Table, Column, PrimaryGeneratedColumn } from "ionic-orm";
+import { Table, Column, PrimaryGeneratedColumn, Entity } from "typeorm";
 
 export interface IMember{
     nom: string,
 }
 
-@Table()
+@Entity('Member')
 export default class Member{
     @Column()
     nom: string;

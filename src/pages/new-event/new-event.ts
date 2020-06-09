@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Toast } from 'ionic-angular';
 import { SplitAmountPage } from '../split-amount/split-amount';
+import Project from '../../models/Project';
 
 /**
  * Generated class for the NewEventPage page.
@@ -16,25 +17,45 @@ import { SplitAmountPage } from '../split-amount/split-amount';
 })
 export class NewEventPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  project: Project;
+  projectNameControlValue: string;
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public toastController: ToastController
+    ) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewEventPage');
+  async ionViewDidLoad() {
+    if(this.navParams.get('isNewProject')){
+      this.project = new Project();
+    } else {
+      this.project = await Project.findOne({id:this.navParams.get('projectId')})
+      this.projectNameControlValue = this.project.name
+    } 
   }
 
   onAddPaymentClick(){
     // TODO : Gérer l'ajout d'un paiement
     console.log('TODO : Gérer ajout paiement')
+    
   }
 
   onGoToSplitClick(){
     this.navCtrl.push(SplitAmountPage);
   }
 
-  onSaveAndReturnClick(){
-    // TODO : Save Current Data
-    this.navCtrl.pop();
+  async onSaveAndReturnClick(){
+    if (this.projectNameControlValue != '' && this.projectNameControlValue != null){
+      this.project.name = this.projectNameControlValue; 
+      await this.project.save();
+      this.navCtrl.pop();
+    } else {
+      console.log('hello');
+      const toast = await this.toastController.create({message: "Le projet n'a pas de titre, il n'a pas été enregistré", duration: 2000})
+      toast.present();
+      this.navCtrl.pop();
+    }
   }
 
 }
