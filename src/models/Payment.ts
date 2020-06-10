@@ -1,5 +1,4 @@
-import { ManyToOne, Column, PrimaryGeneratedColumn, Entity, BaseEntity } from "typeorm";
-import Project from "./Project";
+/*import { ManyToOne, Column, PrimaryGeneratedColumn, Entity, BaseEntity, JoinColumn } from "typeorm";
 
 export interface IPayment{
     id: number,
@@ -27,3 +26,4 @@ export default class Payment extends BaseEntity{
         return (~~this.montant + '.' + this.montant % 100);
     }
 }
+*/

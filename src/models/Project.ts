@@ -1,28 +1,55 @@
-import Payment from './Payment';
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity, ManyToOne, JoinColumn } from 'typeorm';
 
-export interface IProject{
+interface IProject{
     id: number,
     name: string,
     payments: Payment[],
 }
 
 @Entity('Project')
-export default class Project extends BaseEntity{
+class Project extends BaseEntity{
 
 
     @PrimaryGeneratedColumn()
     id: number;
     @Column()
     name: string;
-    @OneToMany(type => Payment, payment => payment.project)
+    @OneToMany(type => Payment, payment => payment.project, {cascade: true})
     payments: Payment[];
 
     constructor(){
         super()
     }
 
-    addPayment(payment: Payment): void{
-        this.payments.push(payment);
+}
+
+interface IPayment{
+    id: number,
+    name: string,
+    montant: number,
+}
+
+@Entity('Payment')
+class Payment extends BaseEntity{
+
+    @PrimaryGeneratedColumn()
+    id: number;
+    @Column()
+    name: string;
+    @Column("int")
+    montant: number;
+    @ManyToOne(type => Project, project => project.payments)
+    @JoinColumn({ name: 'project_id' })
+    project: Project;
+    
+    constructor(){
+        super();
+    }
+
+    montantToEuros(): string{
+        return (~~this.montant + '.' + this.montant % 100);
     }
 }
+
+export default Project;
+export {Payment, IPayment, Project, IProject};

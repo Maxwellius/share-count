@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { NewEventPage } from '../new-event/new-event';
-import Project from '../../models/Project';
 import { getRepository, Repository, createConnection } from 'typeorm';
-import Payment from '../../models/Payment';
+import { Payment, Project } from '../../models/Project';
 
 @Component({
   selector: 'page-home',
@@ -32,6 +31,7 @@ export class HomePage implements OnInit {
             Payment
           ]
         });
+        await connexion.synchronize();
       } else {
         // Running app in browser
         const connexion = await createConnection({
@@ -44,8 +44,8 @@ export class HomePage implements OnInit {
             Payment
           ]
         });
+        await connexion.synchronize();
       }
-      console.log('C est le ion view did load');
       await this.refreshPage();
     });
   }

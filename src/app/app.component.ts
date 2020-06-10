@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 import Project from '../models/Project';
 import { createConnection } from 'typeorm';
-import Payment from '../models/Payment';
 
 @Component({
   templateUrl: 'app.html'

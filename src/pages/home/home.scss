@@ -13,3 +13,8 @@ components-tile.horizontal .tile{
 components-tile.low-padding .tile{
     padding: 15px;
 }
+
+ion-item[no-lines] .item-inner{
+    border: none !important;
+    box-shadow: none !important;
+}

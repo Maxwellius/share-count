@@ -9,16 +9,16 @@
     <div class="form-group">
       <h2>Informations</h2>
       <ion-item no-padding no-lines>
-        <ion-label floating>Nom de l'événement</ion-label>
-        <ion-input type="text" [(ngModel)]="project.name"></ion-input>
+        <ion-label>Nom de l'événement</ion-label>
+        <ion-input type="text" [(ngModel)]="project.name" placeholder="Voyage en guadeloupe" no-lines></ion-input>
       </ion-item>
     </div>
   </components-tile>
-  <div class="centeredButtonContainer mBottom">
-    <ion-button (click)="onAddPaymentClick()" centered>
-      Ajouter un paiement
-    </ion-button>
-  </div>
+  <components-new-payment-form-tile [projectId]="projectId" (onNewPayment)="refreshPaymentList($event)" *ngIf="displayNewEvent"></components-new-payment-form-tile> 
+  <components-tile *ngFor="let payment of paymentsList" class="low-padding">
+    <div>{{ payment.name }}</div>
+    <h2>{{ payment.montant / 100.00 }} €</h2>
+  </components-tile>
   <div class="centeredButtonContainer mBottom">
     <ion-button (click)="onGoToSplitClick()" centered>
       Passer au partage

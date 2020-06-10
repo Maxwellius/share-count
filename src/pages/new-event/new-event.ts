@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, Toast } from 'ionic-angular';
 import { SplitAmountPage } from '../split-amount/split-amount';
-import Project from '../../models/Project';
+import { Payment, Project } from '../../models/Project';
+import { getConnection } from 'typeorm';
 
 /**
  * Generated class for the NewEventPage page.
@@ -18,6 +19,11 @@ import Project from '../../models/Project';
 export class NewEventPage {
 
   project: Project;
+  projectId: number;
+  displayNewEvent: boolean = false;
+  paymentsList: Payment[];
+  totalAmount: number;
+  newPaymentCallback: (newPayment: Payment) => any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -28,15 +34,26 @@ export class NewEventPage {
     if(this.navParams.get('isNewProject')){
       this.project = new Project();
       this.project.name = ''
+      await this.project.save();
+      this.projectId = this.project.id
+      this.displayNewEvent = true;
     } else {
       //This Project initialized to keep async AND don't crash
       this.project = new Project();
       this.project.name = ''
 
       //This Project with true values
-      console.log(this.navParams.get('projectId'));
       this.project = await Project.findOne({id:this.navParams.get('projectId')});
+      this.projectId = this.navParams.get('projectId');
+      this.displayNewEvent = true;
     } 
+
+    this.newPaymentCallback = (newPayment: Payment) => {
+      this.project.payments.push(newPayment);
+      this.project.save();
+    }
+
+    await this.refresh();
   }
 
   async ionViewDidLoad() {
@@ -49,7 +66,10 @@ export class NewEventPage {
   }
 
   onGoToSplitClick(){
-    this.navCtrl.push(SplitAmountPage);
+    console.log('TotalAmount: ', this.totalAmount);
+    this.navCtrl.push(SplitAmountPage, {
+      totalAmount: this.totalAmount
+    });
   }
 
   async onSaveAndReturnClick(){
@@ -62,6 +82,34 @@ export class NewEventPage {
       toast.present();
       this.navCtrl.pop();
     }
+  }
+
+  async refresh(){
+    this.paymentsList = await getConnection()
+      .createQueryBuilder()
+      .select('payment')
+      .from(Payment, 'payment')
+      .where('project_id = :id', {id: this.projectId})
+      .getMany()
+    var sum = 0;
+    for (var i = 0; i < this.paymentsList.length; i++){
+      sum += this.paymentsList[i].montant
+    }
+    this.totalAmount = sum
+  }
+  
+  async refreshPaymentList(newPaymentId: number){
+    console.log("rafraichissement en cours");
+    console.log(newPaymentId);
+    const newPayment = await Payment.findOne(newPaymentId);
+    console.log(newPayment);
+    if(this.project.payments === undefined){
+      this.project.payments = [];
+      this.project.payments.push(newPayment);
+    } else {
+      this.project.payments.push(newPayment);
+    }
+    this.refresh();
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -13,8 +13,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-split-amount',
   templateUrl: 'split-amount.html',
 })
-export class SplitAmountPage {
+export class SplitAmountPage implements OnInit{
 
+  totalAmount: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -22,4 +23,7 @@ export class SplitAmountPage {
     console.log('ionViewDidLoad SplitAmountPage');
   }
 
+  ngOnInit(){
+    this.totalAmount = this.navParams.get('totalAmount');
+  }
 }

@@ -14,6 +14,7 @@ import { ComponentsHeaderTileComponent } from '../components/components-header-t
 import { ComponentsTileComponent } from '../components/components-tile/components-tile';
 import { NewEventPage } from '../pages/new-event/new-event';
 import { SplitAmountPage } from '../pages/split-amount/split-amount';
+import { ComponentsNewPaymentFormTileComponent } from '../components/components-new-payment-form-tile/components-new-payment-form-tile';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SplitAmountPage } from '../pages/split-amount/split-amount';
     NewEventPage,
     ComponentsHeaderTileComponent,
     ComponentsTileComponent,
+    ComponentsNewPaymentFormTileComponent,
     SplitAmountPage
   ],
   imports: [
@@ -41,6 +43,7 @@ import { SplitAmountPage } from '../pages/split-amount/split-amount';
     TabsPage,
     ComponentsHeaderTileComponent,
     ComponentsTileComponent,
+    ComponentsNewPaymentFormTileComponent,
     SplitAmountPage 
   ],
   providers: [
