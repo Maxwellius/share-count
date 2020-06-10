@@ -74,7 +74,15 @@ export class NewEventPage {
 
   async onSaveAndReturnClick(){
     if (this.project.name != '' && this.project.name != null){
-      await this.project.save();
+    getConnection()
+      .createQueryBuilder()
+      .update(Project)
+      .set({
+        name : this.project.name
+      })
+      .where(
+        "id = :id", {id: this.projectId}
+      ).execute()
       this.navParams.get('callbackRefresh')();
       this.navCtrl.pop();
     } else {
