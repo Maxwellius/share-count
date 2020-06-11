@@ -1,3 +1,35 @@
 page-split-amount {
+    .totalShares {
+        margin-left: 1.5em;
+        margin-top: 0.6em;
+        font-size: 1.5em;
+        font-style: bold;
+    }
 
+    #btnSharesMemberL {
+        padding: -1em;
+        margin-right: 1em;
+    }
+
+    #btnSharesMemberR {
+        padding: -1em;
+        margin-left: 0.6em;
+    }
+
+    #btnAddMember {
+        margin-top: 1em;
+        margin-bottom: -0.5em;
+    }
+
+    .euros {
+        font-size: 2em;
+        margin-top: 1.8em;
+    }
+
+    ion-input{ 
+        .text-input{ 
+            text-align: center; 
+            font-size: 1.5em;
+        }
+    }
 }

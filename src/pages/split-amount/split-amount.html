@@ -9,23 +9,74 @@
     <p><b>Montant total: {{ totalAmount / 100}}€</b></p>
     
     <div class="nbSelector">
-      <ion-button (click)="onClick()">
+      <ion-grid>
+        <ion-row>
+          <p>Nombre de parts: </p>
+          <div class="totalShares">
+            <b>{{ sharesAmount }}</b>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <components-tile *ngFor="let member of memberList" class="horizontal low-padding">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-row>
+              <div class="memberName">
+                <b>{{member.name}}</b>
+              </div>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col>
+                <ion-row>
+                  <p>Parts: </p>
+                </ion-row>
+                
+                <ion-row>
+                  <div class="nbSelectorShares">
+                    <ion-button (click)="shareSoustraction(member)" class="secondary" id="btnSharesMemberL">
+                      -
+                    </ion-button>
+                    <b>{{ member.nbShares }}</b>
+                    <ion-button (click)="shareAddition(member)" class="secondary" id="btnSharesMemberR">
+                      +
+                    </ion-button>
+                  </div>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col col-4>
+            <div class="amountToBePayed">
+              <p>Montant à payer:</p>
+              <ion-input type="text" [(ngModel)]="member.amountToPay" disabled="true" class="amountToPay" no-lines></ion-input>
+            </div>
+          </ion-col>
+
+          <ion-col col-1>
+            <p class="euros"><b>€</b></p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </components-tile>
+
+    <!--div class="nbSelector" >
+      <ion-button (click)="onClick()" class="secondary">
         +
       </ion-button>
       5
-      <ion-button (click)="onClick()">
+      <ion-button (click)="onClick()" class="secondary">
         -
       </ion-button>
-    </div>
+    </div-->
 
-    <div class="centeredButtonContainer">
-      <ion-button (click)="onClick()">
+    <div class="centeredButtonContainer" id="btnAddMember">
+      <ion-button (click)="onNewMemberButtonClick()">
         Ajouter un membre
-      </ion-button>
-    </div>
-    <div class="centeredButtonContainer">
-      <ion-button (click)="onClick()" class="secondary">
-        Enregistrer le partage
       </ion-button>
     </div>
   </components-tile>

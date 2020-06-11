@@ -16,6 +16,20 @@ import { NewEventPage } from '../pages/new-event/new-event';
 import { SplitAmountPage } from '../pages/split-amount/split-amount';
 import { ComponentsNewPaymentFormTileComponent } from '../components/components-new-payment-form-tile/components-new-payment-form-tile';
 
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import * as Hammer from 'hammerjs';
+import { NewMemberPage } from '../pages/new-member/new-member';
+
+export class CustomHammerConfig extends HammerGestureConfig {
+  overrides = {
+    'press': {
+      time: 1000
+    },
+    'pinch': { enable: false },
+    'rotate': { enable: false }
+  }
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +41,8 @@ import { ComponentsNewPaymentFormTileComponent } from '../components/components-
     ComponentsHeaderTileComponent,
     ComponentsTileComponent,
     ComponentsNewPaymentFormTileComponent,
-    SplitAmountPage
+    SplitAmountPage,
+    NewMemberPage
   ],
   imports: [
     BrowserModule,
@@ -44,12 +59,14 @@ import { ComponentsNewPaymentFormTileComponent } from '../components/components-
     ComponentsHeaderTileComponent,
     ComponentsTileComponent,
     ComponentsNewPaymentFormTileComponent,
-    SplitAmountPage 
+    SplitAmountPage ,
+    NewMemberPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

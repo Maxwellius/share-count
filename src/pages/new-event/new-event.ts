@@ -25,11 +25,8 @@ export class NewEventPage {
   totalAmount: number;
   newPaymentCallback: (newPayment: Payment) => any;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public toastController: ToastController
-    ) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastController: ToastController) {}
+
   async ngOnInit(){
     if(this.navParams.get('isNewProject')){
       this.project = new Project();
@@ -68,7 +65,8 @@ export class NewEventPage {
   onGoToSplitClick(){
     console.log('TotalAmount: ', this.totalAmount);
     this.navCtrl.push(SplitAmountPage, {
-      totalAmount: this.totalAmount
+      totalAmount: this.totalAmount,
+      projectId: this.project.id
     });
   }
 

@@ -1,15 +1,30 @@
-import { Table, Column, PrimaryGeneratedColumn, Entity } from "typeorm";
+/*import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from "typeorm";
+import Project from "./Project";
 
 export interface IMember{
-    nom: string,
+    name: string,
+    nbShares: number,
+    amountToPay: number
 }
 
 @Entity('Member')
 export default class Member{
+    @PrimaryGeneratedColumn()
+    id: number;
     @Column()
-    nom: string;
-    constructor(newMember: IMember){
-        this.nom = newMember.nom;
-    }
+    name: string;
+    @Column("int")
+    nbShares: number;
+    @Column("int")
+    amountToPay: number;
+    @ManyToOne(type => Project, project => project.payments)
+    @JoinColumn({ name: 'project_id' })
+    project: Project;
 
+    constructor(newMember: IMember){
+        this.name = newMember.name;
+        this.nbShares = newMember.nbShares;
+        this.amountToPay = newMember.amountToPay;
+    }
 }
+*/

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { NewEventPage } from '../new-event/new-event';
 import { getRepository, Repository, createConnection } from 'typeorm';
-import { Payment, Project } from '../../models/Project';
+import { Payment, Project, Member } from '../../models/Project';
 
 @Component({
   selector: 'page-home',
@@ -16,6 +16,7 @@ export class HomePage implements OnInit {
   }
 
   async ngOnInit(){
+
     this.platform.ready().then(async () => {
       //TypeOrm setup
       if(this.platform.is('cordova')) {
@@ -28,7 +29,8 @@ export class HomePage implements OnInit {
           logging: ['error', 'query', 'schema'],
           entities: [
             Project,
-            Payment
+            Payment,
+            Member
           ]
         });
         await connexion.synchronize();
@@ -41,7 +43,8 @@ export class HomePage implements OnInit {
           logging: ['error', 'query', 'schema'],
           entities: [
             Project,
-            Payment
+            Payment,
+            Member
           ]
         });
         await connexion.synchronize();
@@ -50,16 +53,17 @@ export class HomePage implements OnInit {
     });
   }
 
-  trackByProjects(index: number, item: Project ){
+  trackByProjects(index: number, item: Project ) {
     return item.id;
   }
-  async refreshPage(){
+
+  async refreshPage() {
     console.log('RefreshPage called')
     this.projects = await Project.find();
     this.projects = [...this.projects];
   }
 
-  onStartButtonClick(){
+  onStartButtonClick() {
     this.navCtrl.push(NewEventPage, {
       isNewProject: true,
       projectId: null,
@@ -67,13 +71,11 @@ export class HomePage implements OnInit {
     })
   }
 
-  onDetailButtonClick(projectId: number){
+  onDetailButtonClick(projectId: number) {
     this.navCtrl.push(NewEventPage, {
       isNewProject: false,
       projectId: projectId,
       callbackRefresh: () => this.refreshPage()
     })
-
   }
-
 }

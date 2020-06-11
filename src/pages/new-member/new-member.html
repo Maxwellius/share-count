@@ -1,0 +1,27 @@
+<ion-content padding>
+  <components-header-tile
+  title="Nouveau membre"
+  subtitle=""
+  [justTitle]="true"
+  ></components-header-tile>
+
+  <components-tile>
+    <div class="form-group">
+      <h2>Membre</h2>
+      <ion-item no-padding no-lines>
+        <ion-label>Nom du nouveau membre</ion-label>
+        <ion-input type="text" [(ngModel)]="memberName" placeholder="Jean Dupont" no-lines></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="centeredButtonContainer mBottom" id="addMemberBtn">
+      <ion-button (click)="onCancelAddMember()" centered class="secondary" id="btnCancel">
+        Annuler
+      </ion-button>
+
+      <ion-button (click)="onAddMember()" centered id="btnAdd">
+        Ajouter
+      </ion-button>
+    </div>
+  </components-tile>
+</ion-content>

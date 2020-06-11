@@ -21,6 +21,7 @@ export class ComponentsNewPaymentFormTileComponent implements OnInit{
   @Output() onNewPayment: EventEmitter<any> = new EventEmitter();
 
   project: Project;
+
   constructor() {
     console.log('project.id dans constructeur', this.projectId);
   }
@@ -64,5 +65,4 @@ export class ComponentsNewPaymentFormTileComponent implements OnInit{
           )
       });
   }
-
 }
